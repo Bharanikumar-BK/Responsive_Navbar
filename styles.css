@@ -1,0 +1,132 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+body{
+    height: 100vh;
+    background-color: black;
+    background-image: url('night-mountain-2bhotujq381jpvh6.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+}
+li{
+    list-style: none;
+    
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+}
+a:hover{
+    color: orange;
+}
+header{
+    position: relative;
+    padding: 0 2rem;
+}
+.container{
+    width: 100%;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.container .logo a{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.container .links{
+    display: flex;
+    gap: 2rem;
+}
+.container .toggle-button{
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+.action-btn{
+    background-color: orange;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: scale 0.2 ease;
+}
+.action-btn:hover{
+    transform: scale(1.05);
+    color: white;
+}
+.action-btn:active{
+  transform: scale(0.95);
+}
+.dropdown{
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top:60px;
+    height: 0;
+    width: 300px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    overflow: hidden;
+    transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.dropdown.open{
+    height: 240px;
+}
+.dropdown li{
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.dropdown .action-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+@media (max-width: 992px) {
+    .container .links, .container .action-btn{
+        display: none;
+    }
+    
+}
+.container .toggle-button{
+    display: block;
+}
+.dropdown{
+    display: block;
+}
+@media (max-width: 576px){
+    .dropdown{
+        left: 2rem;
+        width: unset;
+    }
+}
+#hero{
+    height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     flex-direction: column;
+    text-align: center;
+    color: white;
+}
+#hero h1{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
