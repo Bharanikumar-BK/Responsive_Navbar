@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd ~/Responsive_Navbar || git clone "https://github.com/BkBharani/Responsive_Navbar.git"
+            cd ~/Responsive_Navbar || git clone https://github.com/BkBharani/Responsive_Navbar.git
             cd ~/Responsive_Navbar
             git pull
             docker stop navbar || true
