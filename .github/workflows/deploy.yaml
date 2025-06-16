@@ -11,6 +11,11 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@v0.1.10
