@@ -9,7 +9,7 @@ describe('Navbar HTML structure', () => {
   let html;
 
   beforeAll(() => {
-    const filePath = path.join(__dirname, 'index.html');
+    const filePath = path.join(__dirname, '../index.html');
     html = fs.readFileSync(filePath, 'utf8');
     document.documentElement.innerHTML = html;
   });
