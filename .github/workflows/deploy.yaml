@@ -1,22 +1,33 @@
-name: Deploy to EC2
+name: Test, Build, and Deploy to EC2
 
 on:
   push:
     branches: [main]
 
 jobs:
-  deploy:
+  test-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-        steps:
+      # 1️⃣ Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-           token: ${{ secrets.GITHUB_TOKEN }}
 
+      # 2️⃣ Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # 3️⃣ Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 4️⃣ Run Jest tests
+      - name: Run tests
+        run: npm test
+
+      # 5️⃣ Deploy to EC2 via SSH
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@v0.1.10
         with:
@@ -24,7 +35,7 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd ~/Responsive_Navbar || git clone https://github.com/BkBharani/Responsive_Navbar.git
+            cd ~/Responsive_Navbar || git clone "https://github.com/BkBharani/Responsive_Navbar.git"
             cd ~/Responsive_Navbar
             git pull
             docker stop navbar || true
